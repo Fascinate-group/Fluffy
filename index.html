@@ -12,9 +12,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Yomogi&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="data/styles.css">
+    <link rel="stylesheet" href="data/styles.css?v=5">
   </head>
   <body>
+    <div class="floating-bg" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Fluffy トップへ">
         <img src="images/Fluffy_Logo.png" alt="Fluffy ロゴ">
@@ -219,13 +229,14 @@
     <div class="lightbox" id="gallery-lightbox" aria-hidden="true" role="dialog" aria-label="ギャラリー画像ビューア">
       <button class="lightbox-close" type="button" aria-label="閉じる">×</button>
       <button class="lightbox-arrow lightbox-prev" type="button" aria-label="前の画像">‹</button>
-      <figure class="lightbox-frame">
+      <figure class="lightbox-frame" onclick="window.closeGalleryLightbox?.()">
         <img src="" alt="">
+        <button class="lightbox-image-close" type="button" aria-label="画像を閉じる"></button>
         <figcaption></figcaption>
       </figure>
       <button class="lightbox-arrow lightbox-next" type="button" aria-label="次の画像">›</button>
     </div>
 
-    <script src="data/script.js"></script>
+    <script src="data/script.js?v=6"></script>
   </body>
 </html>

@@ -4,6 +4,8 @@ const galleryItems = Array.from(document.querySelectorAll(".gallery-item img"));
 const lightbox = document.querySelector("#gallery-lightbox");
 const lightboxImage = lightbox?.querySelector("img");
 const lightboxCaption = lightbox?.querySelector("figcaption");
+const lightboxFrame = lightbox?.querySelector(".lightbox-frame");
+const imageCloseButton = lightbox?.querySelector(".lightbox-image-close");
 const closeButton = lightbox?.querySelector(".lightbox-close");
 const prevButton = lightbox?.querySelector(".lightbox-prev");
 const nextButton = lightbox?.querySelector(".lightbox-next");
@@ -55,6 +57,8 @@ const closeLightbox = () => {
   document.body.classList.remove("is-lightbox-open");
 };
 
+window.closeGalleryLightbox = closeLightbox;
+
 document.querySelectorAll(".gallery-item").forEach((item) => {
   item.addEventListener("click", () => {
     openLightbox(Number(item.dataset.galleryIndex || 0));
@@ -62,11 +66,18 @@ document.querySelectorAll(".gallery-item").forEach((item) => {
 });
 
 closeButton?.addEventListener("click", closeLightbox);
+imageCloseButton?.addEventListener("click", closeLightbox);
 prevButton?.addEventListener("click", () => showGalleryImage(activeGalleryIndex - 1));
 nextButton?.addEventListener("click", () => showGalleryImage(activeGalleryIndex + 1));
+lightboxImage?.addEventListener("click", closeLightbox);
+lightboxFrame?.addEventListener("click", (event) => {
+  if (event.target !== lightboxCaption) {
+    closeLightbox();
+  }
+});
 
 lightbox?.addEventListener("click", (event) => {
-  if (event.target === lightbox) {
+  if (event.target === lightbox || event.target === lightboxImage) {
     closeLightbox();
   }
 });
