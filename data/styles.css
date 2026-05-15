@@ -521,13 +521,13 @@ h3 {
 
 .notice-character {
   position: absolute;
-  right: 1.5rem;
-  bottom: -0.8rem;
-  width: min(6.5rem, 24vw);
-  max-height: 8rem;
+  right: 1.2rem;
+  bottom: -1.4rem;
+  width: min(8.4rem, 28vw);
+  max-height: 9.5rem;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 10px 16px rgba(119, 91, 103, 0.16));
+  filter: brightness(1.1) saturate(1.08) drop-shadow(0 10px 16px rgba(119, 91, 103, 0.16));
   pointer-events: none;
 }
 
@@ -575,7 +575,7 @@ h3 {
 .concept-character {
   position: absolute;
   bottom: -7.25rem;
-  width: min(10.5rem, 16vw);
+  width: min(8.8rem, 14vw);
   max-height: 20rem;
   object-fit: contain;
   object-position: bottom center;
@@ -588,8 +588,8 @@ h3 {
 
 .concept-character-right {
   right: -1rem;
-  bottom: -6.5rem;
-  width: min(9.5rem, 15vw);
+  bottom: -7.4rem;
+  width: min(12.5rem, 19vw);
 }
 
 .concept-grid article,
@@ -827,7 +827,7 @@ dd {
     linear-gradient(135deg, rgba(201, 246, 223, 0.72), rgba(255, 221, 235, 0.72)),
     rgba(255, 255, 255, 0.82);
   box-shadow: var(--shadow);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .entry-section > * {
@@ -837,11 +837,11 @@ dd {
 
 .entry-character {
   position: absolute;
-  right: clamp(0.5rem, 3vw, 2rem);
-  bottom: -1.8rem;
-  z-index: 0;
-  width: min(17rem, 28vw);
-  max-height: 23rem;
+  right: -9rem;
+  bottom: -3.2rem;
+  z-index: 3;
+  width: min(20rem, 30vw);
+  max-height: 25rem;
   object-fit: contain;
   object-position: bottom center;
   opacity: 0.96;
@@ -850,7 +850,7 @@ dd {
 }
 
 .entry-section .promise-list {
-  margin-right: min(12rem, 20vw);
+  margin-right: 0;
 }
 
 .entry-copy h2 {
@@ -980,9 +980,11 @@ dd {
   }
 
   .entry-character {
-    width: 9rem;
-    right: -1.2rem;
-    opacity: 0.45;
+    width: 11rem;
+    right: -2.2rem;
+    bottom: -2.2rem;
+    z-index: 0;
+    opacity: 0.28;
   }
 
   .entry-section .promise-list {
@@ -1052,9 +1054,9 @@ dd {
 
   .notice-character {
     right: 50%;
-    bottom: -1rem;
+    bottom: -1.4rem;
     transform: translateX(50%);
-    width: 5.5rem;
+    width: 6.5rem;
   }
 
   h2 {
