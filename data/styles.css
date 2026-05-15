@@ -68,6 +68,110 @@ body.is-lightbox-open {
   animation-delay: var(--delay);
 }
 
+.floating-bg i {
+  position: absolute;
+  display: block;
+  width: var(--balloon-width);
+  height: calc(var(--balloon-width) * 1.28);
+  left: var(--left);
+  bottom: -11rem;
+  border: 2px solid rgba(255, 255, 255, 0.68);
+  border-radius: 48% 52% 50% 50% / 42% 42% 58% 58%;
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.88) 0 12%, transparent 13%),
+    linear-gradient(145deg, var(--balloon-color-a), var(--balloon-color-b));
+  box-shadow:
+    inset -0.45rem -0.7rem 1rem rgba(119, 91, 103, 0.1),
+    0 0.8rem 2rem rgba(119, 91, 103, 0.09);
+  opacity: var(--opacity);
+  animation: float-balloon var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.floating-bg i::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.45rem;
+  width: 0;
+  height: 0;
+  border-left: 0.35rem solid transparent;
+  border-right: 0.35rem solid transparent;
+  border-top: 0.65rem solid var(--balloon-color-b);
+  transform: translateX(-50%);
+}
+
+.floating-bg i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.15rem);
+  width: 1px;
+  height: 4.4rem;
+  background: linear-gradient(rgba(119, 91, 103, 0.28), transparent);
+  transform: translateX(-50%);
+}
+
+.floating-bg i:nth-of-type(1) {
+  --balloon-width: 3.6rem;
+  --left: 9%;
+  --duration: 30s;
+  --delay: -9s;
+  --opacity: 0.42;
+  --balloon-color-a: rgba(255, 221, 235, 0.62);
+  --balloon-color-b: rgba(238, 143, 185, 0.36);
+}
+
+.floating-bg i:nth-of-type(2) {
+  --balloon-width: 4.4rem;
+  --left: 27%;
+  --duration: 36s;
+  --delay: -21s;
+  --opacity: 0.34;
+  --balloon-color-a: rgba(201, 246, 223, 0.66);
+  --balloon-color-b: rgba(127, 216, 172, 0.34);
+}
+
+.floating-bg i:nth-of-type(3) {
+  --balloon-width: 3rem;
+  --left: 45%;
+  --duration: 28s;
+  --delay: -14s;
+  --opacity: 0.38;
+  --balloon-color-a: rgba(255, 229, 138, 0.64);
+  --balloon-color-b: rgba(238, 201, 99, 0.34);
+}
+
+.floating-bg i:nth-of-type(4) {
+  --balloon-width: 4.8rem;
+  --left: 67%;
+  --duration: 40s;
+  --delay: -5s;
+  --opacity: 0.32;
+  --balloon-color-a: rgba(191, 232, 255, 0.7);
+  --balloon-color-b: rgba(133, 199, 236, 0.34);
+}
+
+.floating-bg i:nth-of-type(5) {
+  --balloon-width: 3.4rem;
+  --left: 81%;
+  --duration: 32s;
+  --delay: -25s;
+  --opacity: 0.4;
+  --balloon-color-a: rgba(255, 221, 235, 0.58);
+  --balloon-color-b: rgba(201, 246, 223, 0.34);
+}
+
+.floating-bg i:nth-of-type(6) {
+  --balloon-width: 5.2rem;
+  --left: 94%;
+  --duration: 44s;
+  --delay: -17s;
+  --opacity: 0.28;
+  --balloon-color-a: rgba(255, 248, 223, 0.74);
+  --balloon-color-b: rgba(255, 221, 235, 0.38);
+}
+
 .floating-bg span:nth-child(1) {
   --size: 5.6rem;
   --left: 6%;
@@ -230,8 +334,27 @@ body.is-lightbox-open {
   }
 }
 
+@keyframes float-balloon {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+
+  35% {
+    transform: translate3d(-1rem, -34vh, 0) rotate(4deg);
+  }
+
+  70% {
+    transform: translate3d(1.3rem, -76vh, 0) rotate(-5deg);
+  }
+
+  100% {
+    transform: translate3d(-0.8rem, -122vh, 0) rotate(3deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .floating-bg span {
+  .floating-bg span,
+  .floating-bg i {
     animation: none;
   }
 }
@@ -521,13 +644,13 @@ h3 {
 
 .notice-character {
   position: absolute;
-  right: -1.8rem;
-  bottom: -4.5rem;
-  width: min(18rem, 42vw);
-  max-height: 20rem;
+  right: -1rem;
+  bottom: -3.8rem;
+  width: min(15rem, 36vw);
+  max-height: 17rem;
   object-fit: contain;
   object-position: bottom center;
-  filter: brightness(1.1) saturate(1.08) drop-shadow(0 10px 16px rgba(119, 91, 103, 0.16));
+  filter: brightness(1.28) contrast(1.04) saturate(1.16) drop-shadow(0 10px 16px rgba(119, 91, 103, 0.16));
   pointer-events: none;
 }
 
@@ -574,8 +697,8 @@ h3 {
 
 .concept-character {
   position: absolute;
-  bottom: -4.8rem;
-  width: min(4.2rem, 6.5vw);
+  bottom: -5.6rem;
+  width: min(6.2rem, 9.5vw);
   max-height: 20rem;
   object-fit: contain;
   object-position: bottom center;
@@ -811,10 +934,10 @@ dd {
 
 .event-character {
   position: absolute;
-  right: -4.2rem;
-  bottom: -2.4rem;
-  width: min(15rem, 24vw);
-  max-height: 20rem;
+  right: -5.2rem;
+  bottom: -3.2rem;
+  width: min(17rem, 27vw);
+  max-height: 22rem;
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 16px 24px rgba(119, 91, 103, 0.2));
@@ -988,9 +1111,9 @@ dd {
   }
 
   .event-character {
-    right: 0.5rem;
+    right: 0.2rem;
     bottom: -1.8rem;
-    width: 8rem;
+    width: 9rem;
     opacity: 0.86;
   }
 
@@ -1057,9 +1180,9 @@ dd {
 
   .notice-character {
     right: 50%;
-    bottom: -3rem;
+    bottom: -2.7rem;
     transform: translateX(50%);
-    width: 10rem;
+    width: 9rem;
   }
 
   h2 {
