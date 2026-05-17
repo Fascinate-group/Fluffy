@@ -8,7 +8,6 @@ const imageCloseButton = lightbox?.querySelector(".lightbox-image-close");
 const closeButton = lightbox?.querySelector(".lightbox-close");
 const prevButton = lightbox?.querySelector(".lightbox-prev");
 const nextButton = lightbox?.querySelector(".lightbox-next");
-const xTimeline = document.querySelector(".x-timeline");
 const lightboxGroups = {
   gallery: {
     label: "Gallery",
@@ -38,15 +37,6 @@ siteNav?.addEventListener("click", (event) => {
     navToggle?.setAttribute("aria-expanded", "false");
   }
 });
-
-if (xTimeline) {
-  const syncTimelineState = () => {
-    xTimeline.classList.toggle("has-embed", Boolean(xTimeline.querySelector("iframe")));
-  };
-  const timelineObserver = new MutationObserver(syncTimelineState);
-  timelineObserver.observe(xTimeline, { childList: true, subtree: true });
-  syncTimelineState();
-}
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 
