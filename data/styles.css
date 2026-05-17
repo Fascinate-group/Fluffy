@@ -1116,14 +1116,50 @@ dd {
 }
 
 .x-timeline {
-  min-height: 32rem;
+  position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 1rem;
   background: #fff;
 }
 
+.x-timeline.has-embed {
+  min-height: 32rem;
+}
+
+.x-timeline > .twitter-timeline {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.x-fallback {
+  display: grid;
+  gap: 1rem;
+  min-height: 16rem;
+  padding: 1.4rem;
+  place-content: center;
+  background:
+    linear-gradient(135deg, rgba(255, 221, 235, 0.68), rgba(201, 246, 223, 0.68)),
+    #fff;
+}
+
+.x-fallback p {
+  margin: 0;
+}
+
+.x-fallback .button {
+  justify-self: start;
+}
+
+.x-timeline.has-embed .x-fallback {
+  display: none;
+}
+
 .x-timeline iframe {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100% !important;
 }
