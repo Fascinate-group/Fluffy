@@ -679,6 +679,10 @@ h3 {
   gap: 1rem;
 }
 
+.cast-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .concept-section {
   position: relative;
 }
@@ -1054,10 +1058,6 @@ dd {
 
 .avatar-peach {
   background: radial-gradient(circle at 35% 35%, #fff 0 18%, #ffd2bd 19% 100%);
-}
-
-.avatar-sky {
-  background: radial-gradient(circle at 35% 35%, #fff 0 18%, var(--sky) 19% 100%);
 }
 
 .x-panel {
