@@ -751,6 +751,7 @@ h3 {
   margin: 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.86);
+  cursor: zoom-in;
 }
 
 .cast-profile-card img {
@@ -760,6 +761,17 @@ h3 {
   object-fit: contain;
   object-position: center;
   background: #fff;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.cast-profile-card:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.06);
+}
+
+.cast-profile-card:focus-visible {
+  outline: 3px solid var(--pink-deep);
+  outline-offset: 4px;
 }
 
 .cast-profile-card figcaption {
@@ -810,6 +822,7 @@ h3 {
   background: rgba(45, 37, 48, 0.78);
   backdrop-filter: blur(10px);
   cursor: zoom-out;
+  touch-action: pan-y;
 }
 
 .lightbox.is-open {
@@ -822,6 +835,7 @@ h3 {
   gap: 0.75rem;
   width: min(100%, 78rem);
   margin: 0;
+  touch-action: pan-y;
 }
 
 .lightbox-frame img {
@@ -1047,13 +1061,38 @@ dd {
 }
 
 .x-panel {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.72fr) minmax(18rem, 1fr);
+  align-items: start;
   justify-content: space-between;
   gap: 1.5rem;
   background: #fff;
 }
 
+.x-copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.x-copy .button {
+  justify-self: start;
+}
+
 .x-panel h3 {
   margin-bottom: 0.2rem;
+}
+
+.x-timeline {
+  min-height: 32rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.x-timeline iframe {
+  display: block;
+  width: 100% !important;
 }
 
 .site-footer {
@@ -1104,7 +1143,8 @@ dd {
 
   .hero,
   .info-layout,
-  .entry-section {
+  .entry-section,
+  .x-panel {
     grid-template-columns: 1fr;
   }
 
