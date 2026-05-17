@@ -1017,15 +1017,15 @@ dd {
   position: relative;
   background: linear-gradient(180deg, #fff9e6, #fffefa);
   overflow: visible;
-  padding-right: min(11rem, 22vw);
 }
 
 .event-character {
-  position: absolute;
-  right: -6.7rem;
-  bottom: -4.6rem;
-  width: min(22rem, 34vw);
-  max-height: 28rem;
+  grid-column: 2;
+  justify-self: end;
+  width: min(13.5rem, 18vw);
+  aspect-ratio: 9 / 16;
+  max-height: 20rem;
+  margin: -2.4rem 0.8rem 0 0;
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 16px 24px rgba(119, 91, 103, 0.2));
@@ -1253,15 +1253,11 @@ dd {
     margin-right: 0;
   }
 
-  .day-card {
-    padding-right: 1.5rem;
-    padding-bottom: 9rem;
-  }
-
   .event-character {
-    right: -1rem;
-    bottom: -3rem;
-    width: 12rem;
+    justify-self: center;
+    grid-column: auto;
+    width: min(12rem, 46vw);
+    margin: 0.5rem auto -1rem;
     opacity: 0.86;
   }
 
