@@ -709,6 +709,13 @@ h3 {
   left: 0.4rem;
 }
 
+.concept-character-center {
+  left: 50%;
+  bottom: -6.1rem;
+  width: min(6.8rem, 10vw);
+  transform: translateX(-50%);
+}
+
 .concept-character-right {
   right: -4rem;
   bottom: -10rem;
@@ -720,7 +727,8 @@ h3 {
 .info-panel,
 .day-card,
 .promise-list,
-.x-panel {
+.x-panel,
+.cast-profile-card {
   border: 1px solid var(--line);
   border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.78);
@@ -730,6 +738,35 @@ h3 {
 .concept-grid article,
 .cast-grid article {
   padding: 1.4rem;
+}
+
+.cast-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cast-profile-card {
+  margin: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.cast-profile-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+
+.cast-profile-card figcaption {
+  padding: 0.9rem 1rem 1rem;
+  color: var(--ink);
+  font-weight: 800;
+  text-align: center;
 }
 
 .gallery-grid {
@@ -1093,6 +1130,7 @@ dd {
 
   .concept-grid,
   .cast-grid,
+  .cast-profile-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
   }
