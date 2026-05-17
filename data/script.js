@@ -8,6 +8,7 @@ const imageCloseButton = lightbox?.querySelector(".lightbox-image-close");
 const closeButton = lightbox?.querySelector(".lightbox-close");
 const prevButton = lightbox?.querySelector(".lightbox-prev");
 const nextButton = lightbox?.querySelector(".lightbox-next");
+const xTimeline = document.querySelector(".x-timeline");
 const lightboxGroups = {
   gallery: {
     label: "Gallery",
@@ -37,6 +38,36 @@ siteNav?.addEventListener("click", (event) => {
     navToggle?.setAttribute("aria-expanded", "false");
   }
 });
+
+if (xTimeline) {
+  window.twttr = window.twttr || { _e: [], ready: (callback) => window.twttr._e.push(callback) };
+
+  const markTimelineRendered = () => {
+    xTimeline.classList.add("is-rendered");
+  };
+
+  window.twttr.ready((twttr) => {
+    if (!twttr.events?.bind) {
+      return;
+    }
+
+    twttr.events.bind("rendered", (event) => {
+      if (event.target?.closest?.(".x-timeline")) {
+        markTimelineRendered();
+      }
+    });
+    twttr.widgets?.load?.(xTimeline);
+  });
+
+  if (!document.querySelector("#twitter-wjs")) {
+    const script = document.createElement("script");
+    script.id = "twitter-wjs";
+    script.async = true;
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.charset = "utf-8";
+    document.head.appendChild(script);
+  }
+}
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 

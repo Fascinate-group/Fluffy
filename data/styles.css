@@ -1116,10 +1116,23 @@ dd {
 }
 
 .x-timeline {
+  position: relative;
+  min-height: 20rem;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 1rem;
   background: #fff;
+}
+
+.x-timeline.is-rendered {
+  min-height: 32rem;
+}
+
+.x-timeline > .twitter-timeline {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .x-fallback {
@@ -1139,6 +1152,17 @@ dd {
 
 .x-fallback .button {
   justify-self: start;
+}
+
+.x-timeline.is-rendered .x-fallback {
+  display: none;
+}
+
+.x-timeline iframe {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100% !important;
 }
 
 .site-footer {
