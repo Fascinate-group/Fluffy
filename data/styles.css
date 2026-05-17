@@ -644,10 +644,10 @@ h3 {
 
 .notice-character {
   position: absolute;
-  right: -1rem;
-  bottom: -3.8rem;
-  width: min(15rem, 36vw);
-  max-height: 17rem;
+  right: -0.4rem;
+  bottom: -3.4rem;
+  width: min(13.5rem, 32vw);
+  max-height: 15.5rem;
   object-fit: contain;
   object-position: bottom center;
   filter: brightness(1.28) contrast(1.04) saturate(1.16) drop-shadow(0 10px 16px rgba(119, 91, 103, 0.16));
@@ -934,10 +934,10 @@ dd {
 
 .event-character {
   position: absolute;
-  right: -5.2rem;
-  bottom: -3.2rem;
-  width: min(17rem, 27vw);
-  max-height: 22rem;
+  right: -6.7rem;
+  bottom: -4.6rem;
+  width: min(22rem, 34vw);
+  max-height: 28rem;
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 16px 24px rgba(119, 91, 103, 0.2));
@@ -1111,9 +1111,9 @@ dd {
   }
 
   .event-character {
-    right: 0.2rem;
-    bottom: -1.8rem;
-    width: 9rem;
+    right: -1rem;
+    bottom: -3rem;
+    width: 12rem;
     opacity: 0.86;
   }
 
@@ -1175,14 +1175,16 @@ dd {
 
   .notice-band {
     padding-right: 1.1rem;
-    padding-bottom: 6rem;
+    padding-bottom: 9.2rem;
+    margin-bottom: 3.5rem;
   }
 
   .notice-character {
     right: 50%;
-    bottom: -2.7rem;
+    bottom: -4.5rem;
     transform: translateX(50%);
-    width: 9rem;
+    width: 6.8rem;
+    max-height: 9.5rem;
   }
 
   h2 {
