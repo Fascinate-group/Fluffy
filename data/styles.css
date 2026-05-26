@@ -751,6 +751,24 @@ h3 {
   margin-top: 1rem;
 }
 
+.cast-generation {
+  margin-top: 1.5rem;
+}
+
+.cast-generation h3 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  margin: 0;
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #c46094;
+  font-size: 1rem;
+  box-shadow: 0 10px 24px rgba(119, 91, 103, 0.08);
+}
+
 .cast-profile-card {
   margin: 0;
   overflow: hidden;
