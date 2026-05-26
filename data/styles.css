@@ -893,8 +893,8 @@ h3 {
 }
 
 .cast-section .cast-profile-card img {
-  height: 100%;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  aspect-ratio: auto;
 }
 
 .cast-section .cast-profile-card figcaption {
