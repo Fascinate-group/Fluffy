@@ -803,6 +803,70 @@ h3 {
   text-align: center;
 }
 
+.cast-select-section h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Yomogi", cursive;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.cast-query-panel,
+.cast-result-summary {
+  margin-bottom: 1rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 14px 34px rgba(119, 91, 103, 0.1);
+}
+
+.cast-query-panel {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.cast-query-panel p,
+.cast-result-summary p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.cast-query-panel code,
+.cast-empty code {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.25rem 0.45rem;
+  overflow-wrap: anywhere;
+  border-radius: 0.45rem;
+  background: #fff7fb;
+  color: #9f4f7e;
+  font-weight: 800;
+}
+
+.cast-warning {
+  color: #c46094 !important;
+}
+
+.cast-selected-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cast-selected-card figcaption {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.cast-selected-card figcaption span {
+  color: #c46094;
+  font-size: 0.84rem;
+}
+
 .gallery-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1260,6 +1324,7 @@ dd {
   .concept-grid,
   .cast-grid,
   .cast-profile-grid,
+  .cast-selected-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
   }
