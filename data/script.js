@@ -83,13 +83,15 @@ if (xTimeline) {
 
 if (heroPhotoScatter) {
   const photoPositions = [
-    { x: 12, y: 20, rotate: -10 },
-    { x: 30, y: 12, rotate: 8 },
-    { x: 48, y: 24, rotate: -6 },
-    { x: 16, y: 64, rotate: 7 },
-    { x: 40, y: 76, rotate: -9 },
-    { x: 62, y: 14, rotate: 11 },
-    { x: 72, y: 58, rotate: -7 },
+    { x: -2, y: 18, rotate: -11 },
+    { x: 17, y: 8, rotate: 8 },
+    { x: 36, y: 22, rotate: -6 },
+    { x: 57, y: 5, rotate: 10 },
+    { x: 80, y: 20, rotate: -8 },
+    { x: 101, y: 42, rotate: 9 },
+    { x: 7, y: 76, rotate: 7 },
+    { x: 43, y: 84, rotate: -10 },
+    { x: 74, y: 72, rotate: 6 },
   ];
   const shuffledPhotos = [...galleryPhotos].sort(() => Math.random() - 0.5);
   const fragment = document.createDocumentFragment();
