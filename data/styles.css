@@ -767,7 +767,7 @@ h3 {
 }
 
 .concept-grid article,
-.cast-grid article,
+.cast-switch-card,
 .info-panel,
 .day-card,
 .promise-list,
@@ -780,8 +780,56 @@ h3 {
 }
 
 .concept-grid article,
-.cast-grid article {
+.cast-switch-card {
   padding: 1.4rem;
+}
+
+.cast-switch-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-color: var(--line);
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cast-switch-card::after {
+  content: "";
+  position: absolute;
+  inset: 0.55rem;
+  border: 2px solid transparent;
+  border-radius: 1.1rem;
+  pointer-events: none;
+}
+
+.cast-switch-card.is-active {
+  border-color: #68d49b;
+  background:
+    linear-gradient(135deg, rgba(201, 246, 223, 0.82), rgba(255, 255, 255, 0.92)),
+    #fff;
+  box-shadow: 0 18px 42px rgba(97, 188, 137, 0.2);
+}
+
+.cast-switch-card.is-active::after {
+  border-color: rgba(104, 212, 155, 0.55);
+}
+
+.cast-switch-card.is-active h3::after {
+  content: "表示中";
+  display: inline-flex;
+  margin-left: 0.6rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #75d8a5;
+  color: #173d2b;
+  font-size: 0.78rem;
+  vertical-align: middle;
+}
+
+.cast-panel[hidden] {
+  display: none;
 }
 
 .cast-profile-grid {

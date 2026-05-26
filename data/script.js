@@ -10,6 +10,8 @@ const prevButton = lightbox?.querySelector(".lightbox-prev");
 const nextButton = lightbox?.querySelector(".lightbox-next");
 const xTimeline = document.querySelector(".x-timeline");
 const heroPhotoScatter = document.querySelector(".hero-photo-scatter");
+const castSwitchButtons = Array.from(document.querySelectorAll(".cast-switch-card"));
+const castPanels = Array.from(document.querySelectorAll(".cast-panel"));
 const lightboxGroups = {
   gallery: {
     label: "Gallery",
@@ -114,6 +116,26 @@ if (heroPhotoScatter) {
 
   heroPhotoScatter.append(fragment);
 }
+
+const updateCastGroup = (group) => {
+  castSwitchButtons.forEach((button) => {
+    const isActive = button.dataset.castPanel === group;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+
+  castPanels.forEach((panel) => {
+    const isActive = panel.id === `${group}-cast-panel`;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+};
+
+castSwitchButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    updateCastGroup(button.dataset.castPanel || "child");
+  });
+});
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 
