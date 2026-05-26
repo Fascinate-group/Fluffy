@@ -688,50 +688,6 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.concept-section {
-  position: relative;
-}
-
-.concept-grid {
-  position: relative;
-  z-index: 1;
-}
-
-.concept-characters {
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.concept-character {
-  position: absolute;
-  bottom: -5.6rem;
-  width: min(6.2rem, 9.5vw);
-  max-height: 20rem;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: drop-shadow(0 16px 22px rgba(119, 91, 103, 0.18));
-}
-
-.concept-character-left {
-  left: 0.4rem;
-}
-
-.concept-character-center {
-  left: 50%;
-  bottom: -8.2rem;
-  width: min(12rem, 17vw);
-  filter: brightness(1.24) contrast(1.04) saturate(1.12) drop-shadow(0 16px 22px rgba(119, 91, 103, 0.18));
-  transform: translateX(-50%);
-}
-
-.concept-character-right {
-  right: -4rem;
-  bottom: -10rem;
-  width: min(22rem, 31vw);
-}
-
 .concept-grid article,
 .cast-switch-card,
 .info-panel,
@@ -748,6 +704,50 @@ h3 {
 .concept-grid article,
 .cast-switch-card {
   padding: 1.4rem;
+}
+
+.concept-grid article {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.concept-grid article > :not(.concept-card-splash) {
+  position: relative;
+  z-index: 2;
+}
+
+.concept-card-splash {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(1.06) saturate(1.04) drop-shadow(0 16px 22px rgba(119, 91, 103, 0.16));
+  opacity: 0.42;
+}
+
+.concept-card-splash-left {
+  top: -1.7rem;
+  right: 0.6rem;
+  width: min(8.2rem, 42%);
+  transform: rotate(-4deg);
+}
+
+.concept-card-splash-center {
+  top: -2.05rem;
+  right: 0.15rem;
+  width: min(9rem, 44%);
+  filter: brightness(1.14) contrast(1.02) saturate(1.07) drop-shadow(0 16px 22px rgba(119, 91, 103, 0.16));
+  opacity: 0.36;
+}
+
+.concept-card-splash-right {
+  top: -3rem;
+  right: -1rem;
+  width: min(12rem, 54%);
+  opacity: 0.34;
+  transform: rotate(5deg);
 }
 
 .cast-switch-card {
@@ -1511,7 +1511,7 @@ dd {
     grid-template-columns: 1fr;
   }
 
-  .concept-characters {
+  .concept-card-splash {
     display: none;
   }
 
