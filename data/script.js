@@ -9,6 +9,7 @@ const closeButton = lightbox?.querySelector(".lightbox-close");
 const prevButton = lightbox?.querySelector(".lightbox-prev");
 const nextButton = lightbox?.querySelector(".lightbox-next");
 const xTimeline = document.querySelector(".x-timeline");
+const heroPhotoScatter = document.querySelector(".hero-photo-scatter");
 const lightboxGroups = {
   gallery: {
     label: "Gallery",
@@ -26,6 +27,17 @@ let touchStartY = 0;
 let touchDeltaX = 0;
 let touchDeltaY = 0;
 let swipedRecently = false;
+const galleryPhotos = [
+  "images/gallery/01.jpg",
+  "images/gallery/02.jpg",
+  "images/gallery/03.jpg",
+  "images/gallery/04.jpg",
+  "images/gallery/05.jpg",
+  "images/gallery/06.jpg",
+  "images/gallery/07.jpg",
+  "images/gallery/08.jpg",
+  "images/gallery/09.jpg",
+];
 
 navToggle?.addEventListener("click", () => {
   const isOpen = siteNav.classList.toggle("is-open");
@@ -67,6 +79,38 @@ if (xTimeline) {
     script.charset = "utf-8";
     document.head.appendChild(script);
   }
+}
+
+if (heroPhotoScatter) {
+  const photoPositions = [
+    { x: 12, y: 20, rotate: -10 },
+    { x: 30, y: 12, rotate: 8 },
+    { x: 48, y: 24, rotate: -6 },
+    { x: 16, y: 64, rotate: 7 },
+    { x: 40, y: 76, rotate: -9 },
+    { x: 62, y: 14, rotate: 11 },
+    { x: 72, y: 58, rotate: -7 },
+  ];
+  const shuffledPhotos = [...galleryPhotos].sort(() => Math.random() - 0.5);
+  const fragment = document.createDocumentFragment();
+
+  photoPositions.forEach((position, index) => {
+    const frame = document.createElement("span");
+    frame.className = "hero-scatter-photo";
+    frame.style.left = `${position.x}%`;
+    frame.style.top = `${position.y}%`;
+    frame.style.setProperty("--photo-rotate", `${position.rotate}deg`);
+
+    const image = document.createElement("img");
+    image.src = shuffledPhotos[index % shuffledPhotos.length];
+    image.alt = "";
+    image.loading = "eager";
+
+    frame.append(image);
+    fragment.append(frame);
+  });
+
+  heroPhotoScatter.append(fragment);
 }
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
