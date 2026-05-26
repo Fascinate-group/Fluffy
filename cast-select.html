@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Fluffyの指定キャスト画像をURLパラメータから表示するページです。">
-    <meta property="og:title" content="Fluffy キャスト画像リスト">
-    <meta property="og:description" content="URLで指定したちびっこキャスト画像を一覧表示します。">
+    <meta name="description" content="Fluffy保育園で当日遊んでいただく園児たちの紹介ページです。">
+    <meta property="og:title" content="Fluffy 当日の園児たち">
+    <meta property="og:description" content="Fluffy保育園で当日遊んでいただく園児たちを紹介します。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/Fluffy_Logo.png">
-    <title>Fluffy キャスト画像リスト</title>
+    <title>Fluffy 当日の園児たち</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Yomogi&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="data/styles.css?v=16">
+    <link rel="stylesheet" href="data/styles.css?v=17">
   </head>
   <body>
     <div class="floating-bg" aria-hidden="true">
@@ -40,22 +40,16 @@
     <main>
       <section class="section cast-select-section">
         <div class="section-heading">
-          <p class="eyebrow">Cast List</p>
-          <h1>キャスト画像リスト</h1>
-          <p>URLのGETパラメータにキャスト番号をカンマ区切りで指定すると、該当する画像だけを一覧表示します。</p>
-        </div>
-
-        <div class="cast-query-panel">
-          <p class="small-title">URL例</p>
-          <code>cast-select.html?casts=15,21,31</code>
-          <p>使用できるパラメータ名: <code>casts</code> / <code>cast</code> / <code>ids</code> / <code>c</code></p>
+          <p class="eyebrow">Fluffy Kids</p>
+          <h1>当日の園児たち</h1>
+          <p>当日遊んでいただく当保育園の園児たちです。ほのぼのとした時間を一緒に過ごしてください。</p>
         </div>
 
         <div class="cast-result-summary" id="cast-result-summary" aria-live="polite"></div>
-        <div class="cast-selected-grid" id="cast-selected-grid" aria-label="指定されたキャスト画像一覧"></div>
+        <div class="cast-selected-grid" id="cast-selected-grid" aria-label="当日遊んでいただく園児一覧"></div>
       </section>
     </main>
 
-    <script src="data/cast-select.js?v=1"></script>
+    <script src="data/cast-select.js?v=2"></script>
   </body>
 </html>
