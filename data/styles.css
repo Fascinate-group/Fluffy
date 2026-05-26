@@ -720,8 +720,9 @@ h3 {
 
 .concept-character-center {
   left: 50%;
-  bottom: -6.1rem;
-  width: min(6.8rem, 10vw);
+  bottom: -8.2rem;
+  width: min(12rem, 17vw);
+  filter: brightness(1.24) contrast(1.04) saturate(1.12) drop-shadow(0 16px 22px rgba(119, 91, 103, 0.18));
   transform: translateX(-50%);
 }
 
