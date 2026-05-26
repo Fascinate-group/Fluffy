@@ -892,6 +892,21 @@ h3 {
   text-align: center;
 }
 
+.cast-section .cast-profile-card img {
+  height: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.cast-section .cast-profile-card figcaption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .cast-select-section h1 {
   margin: 0;
   color: var(--ink);
@@ -1294,16 +1309,7 @@ dd {
 }
 
 .event-character {
-  grid-column: 1 / -1;
-  justify-self: end;
-  width: min(13.5rem, 18vw);
-  aspect-ratio: 9 / 16;
-  max-height: 20rem;
-  margin: -2.4rem 0.8rem 0 0;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: drop-shadow(0 16px 24px rgba(119, 91, 103, 0.2));
-  pointer-events: none;
+  display: none;
 }
 
 .small-title {
@@ -1540,20 +1546,13 @@ dd {
     grid-template-columns: 1fr;
   }
 
-  .concept-characters {
+  .concept-characters,
+  .notice-character {
     display: none;
   }
 
   .entry-section .promise-list {
     margin-right: 0;
-  }
-
-  .event-character {
-    justify-self: center;
-    grid-column: auto;
-    width: min(12rem, 46vw);
-    margin: 0.5rem auto -1rem;
-    opacity: 0.86;
   }
 
   .lightbox {
@@ -1616,14 +1615,6 @@ dd {
     padding-right: 1.1rem;
     padding-bottom: 9.2rem;
     margin-bottom: 3.5rem;
-  }
-
-  .notice-character {
-    right: 50%;
-    bottom: -4.5rem;
-    transform: translateX(50%);
-    width: 6.8rem;
-    max-height: 9.5rem;
   }
 
   h2 {

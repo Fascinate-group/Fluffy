@@ -139,10 +139,7 @@ castSwitchButtons.forEach((button) => {
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 
-const getImageLabel = (image) => {
-  const caption = image.closest("figure")?.querySelector("figcaption")?.textContent?.trim();
-  return caption || image.alt || "";
-};
+const getImageLabel = (image) => image.alt?.replace("のキャラクター紹介", "") || "";
 
 const showLightboxImage = (index) => {
   const activeItems = getActiveItems();
@@ -206,7 +203,7 @@ document.querySelectorAll(".gallery-item").forEach((item, index) => {
 });
 
 document.querySelectorAll(".cast-profile-card").forEach((card, index) => {
-  const imageName = card.querySelector("figcaption")?.textContent?.trim() || "キャスト";
+  const imageName = card.querySelector("img")?.alt?.replace("のキャラクター紹介", "") || "キャスト";
   card.setAttribute("role", "button");
   card.setAttribute("tabindex", "0");
   card.setAttribute("aria-label", `${imageName}の画像を拡大表示`);
