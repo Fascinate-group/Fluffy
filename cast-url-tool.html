@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Fluffy管理者向けのキャストリストURL作成ツールです。">
+    <title>Fluffy キャストURL作成ツール</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Yomogi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="data/styles.css?v=16">
+  </head>
+  <body>
+    <div class="floating-bg" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <img src="images/Fluffy_Logo.png" alt="">
+        <span>Fluffy</span>
+      </a>
+      <nav class="site-nav" aria-label="管理者用ナビゲーション">
+        <a href="cast-select.html">表示ページへ</a>
+        <a href="index.html">トップへ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section cast-tool-section">
+        <div class="section-heading">
+          <p class="eyebrow">Admin Tool</p>
+          <h1>キャストURL作成ツール</h1>
+          <p>表示したいキャストを選ぶと、共有用のキャスト画像リストURLを作成できます。</p>
+        </div>
+
+        <div class="cast-tool-output">
+          <label for="cast-url-output">作成されたURL</label>
+          <div class="cast-url-row">
+            <input id="cast-url-output" type="text" readonly value="">
+            <button class="button primary" id="copy-cast-url" type="button">URLをコピー</button>
+          </div>
+          <div class="cast-tool-actions">
+            <a class="button secondary" id="open-cast-url" href="cast-select.html" target="_blank" rel="noopener">表示を確認</a>
+            <button class="button secondary" id="select-all-casts" type="button">全員を選択</button>
+            <button class="button secondary" id="clear-casts" type="button">選択を解除</button>
+          </div>
+          <p class="cast-copy-status" id="cast-copy-status" aria-live="polite"></p>
+        </div>
+
+        <div class="cast-tool-grid" id="cast-tool-grid" aria-label="キャスト選択"></div>
+      </section>
+    </main>
+
+    <script src="data/cast-url-tool.js?v=1"></script>
+  </body>
+</html>

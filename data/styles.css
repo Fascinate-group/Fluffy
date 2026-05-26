@@ -867,6 +867,110 @@ h3 {
   font-size: 0.84rem;
 }
 
+.cast-tool-section h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Yomogi", cursive;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.cast-tool-output {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 14px 34px rgba(119, 91, 103, 0.1);
+}
+
+.cast-tool-output label {
+  color: #c46094;
+  font-weight: 800;
+}
+
+.cast-url-row,
+.cast-tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cast-url-row input {
+  flex: 1 1 24rem;
+  min-width: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+}
+
+.cast-copy-status {
+  min-height: 1.5rem;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.cast-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cast-tool-card {
+  display: grid;
+  grid-template-columns: auto minmax(4.5rem, 6rem) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+  min-height: 7rem;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 14px 34px rgba(119, 91, 103, 0.1);
+  cursor: pointer;
+}
+
+.cast-tool-card:has(input:checked) {
+  border-color: #75d8a5;
+  background: linear-gradient(135deg, rgba(201, 246, 223, 0.78), rgba(255, 255, 255, 0.92));
+}
+
+.cast-tool-card input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #6ed49c;
+}
+
+.cast-tool-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 0.9rem;
+  background: #fff;
+}
+
+.cast-tool-name {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.cast-tool-name small {
+  color: #c46094;
+  font-size: 0.82rem;
+}
+
 .gallery-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1325,6 +1429,7 @@ dd {
   .cast-grid,
   .cast-profile-grid,
   .cast-selected-grid,
+  .cast-tool-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
   }
