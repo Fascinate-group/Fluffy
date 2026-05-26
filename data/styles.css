@@ -659,42 +659,6 @@ h3 {
   background: var(--pink);
 }
 
-.notice-band {
-  position: relative;
-  width: min(1120px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 1.1rem 8rem 1.1rem 1.1rem;
-  border: 2px dashed #f4aac9;
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.75);
-  overflow: visible;
-}
-
-.notice-band div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.notice-band strong {
-  color: #cc5f96;
-}
-
-.notice-character {
-  position: absolute;
-  right: -0.4rem;
-  bottom: -3.4rem;
-  width: min(13.5rem, 32vw);
-  max-height: 15.5rem;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: brightness(1.28) contrast(1.04) saturate(1.16) drop-shadow(0 10px 16px rgba(119, 91, 103, 0.16));
-  pointer-events: none;
-}
-
 .section {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -1546,8 +1510,7 @@ dd {
     grid-template-columns: 1fr;
   }
 
-  .concept-characters,
-  .notice-character {
+  .concept-characters {
     display: none;
   }
 
@@ -1609,12 +1572,6 @@ dd {
 
   .badge-pink {
     display: none;
-  }
-
-  .notice-band {
-    padding-right: 1.1rem;
-    padding-bottom: 9.2rem;
-    margin-bottom: 3.5rem;
   }
 
   h2 {
