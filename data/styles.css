@@ -1161,7 +1161,6 @@ h3 {
 }
 
 .event-layout,
-.info-layout,
 .entry-section {
   display: grid;
   gap: 1rem;
@@ -1172,7 +1171,6 @@ h3 {
   align-items: start;
 }
 
-.info-layout,
 .entry-section {
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
   align-items: stretch;
@@ -1241,12 +1239,13 @@ dd {
 
 .day-card {
   position: relative;
+  grid-column: 1 / -1;
   background: linear-gradient(180deg, #fff9e6, #fffefa);
   overflow: visible;
 }
 
 .event-character {
-  grid-column: 2;
+  grid-column: 1 / -1;
   justify-self: end;
   width: min(13.5rem, 18vw);
   aspect-ratio: 9 / 16;
@@ -1439,7 +1438,6 @@ dd {
 
   .hero,
   .event-layout,
-  .info-layout,
   .entry-section,
   .x-panel {
     grid-template-columns: 1fr;
