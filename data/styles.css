@@ -19,6 +19,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1457,6 +1458,14 @@ dd {
 }
 
 @media (max-width: 820px) {
+  body {
+    max-width: 100%;
+  }
+
+  main {
+    overflow-x: clip;
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -1496,6 +1505,8 @@ dd {
   }
 
   .hero-photo-scatter {
+    inset: 0;
+    overflow: hidden;
     opacity: 0.82;
   }
 
