@@ -44,6 +44,12 @@ const galleryPhotos = [
   "images/gallery/11.jpg",
   "images/gallery/12.jpg",
   "images/gallery/13.jpg",
+  "images/gallery/14.jpg",
+  "images/gallery/15.jpg",
+  "images/gallery/16.jpg",
+  "images/gallery/17.jpg",
+  "images/gallery/18.jpg",
+  "images/gallery/19.jpg",
 ];
 
 const markImageOrientation = (image, target = image) => {
