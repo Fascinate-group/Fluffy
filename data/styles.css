@@ -626,39 +626,6 @@ h3 {
   filter: drop-shadow(0 14px 20px rgba(68, 59, 72, 0.14));
 }
 
-.badge {
-  position: absolute;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 6.5rem;
-  min-height: 3rem;
-  padding: 0.55rem 1rem;
-  border: 3px solid #fff;
-  border-radius: 999px;
-  font-weight: 800;
-  box-shadow: 0 14px 24px rgba(119, 91, 103, 0.14);
-}
-
-.badge-blue {
-  right: 0.8rem;
-  top: 5rem;
-  background: var(--sky);
-}
-
-.badge-yellow {
-  left: 0.2rem;
-  bottom: 5.5rem;
-  background: var(--yellow);
-}
-
-.badge-pink {
-  right: 3rem;
-  bottom: 1.2rem;
-  background: var(--pink);
-}
-
 .section {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -1629,14 +1596,6 @@ dd {
     inset: 2rem 1rem 1rem;
   }
 
-  .badge-blue {
-    display: none;
-  }
-
-  .badge-pink {
-    display: none;
-  }
-
   h2 {
     font-size: 2rem;
   }
@@ -1651,8 +1610,4 @@ dd {
     width: 100%;
   }
 
-  .badge {
-    min-width: 5.5rem;
-    font-size: 0.92rem;
-  }
 }
