@@ -688,22 +688,27 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.concept-section {
-  position: relative;
+.concept-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.15rem;
 }
 
 .concept-photo {
-  position: absolute;
-  top: clamp(4.7rem, 7vw, 6.2rem);
-  right: 0.4rem;
-  width: min(24rem, 32vw);
   margin: 0;
   padding: 0.55rem;
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.86);
   box-shadow: 0 18px 40px rgba(119, 91, 103, 0.16);
-  transform: rotate(4deg);
-  z-index: 1;
+}
+
+.concept-photo-welcome {
+  transform: rotate(-1.6deg);
+}
+
+.concept-photo-outing {
+  transform: rotate(1.4deg);
 }
 
 .concept-photo img {
@@ -1455,13 +1460,13 @@ dd {
 }
 
 @media (max-width: 980px) {
+  .concept-photo-grid {
+    grid-template-columns: 1fr;
+    margin-top: 1rem;
+  }
+
   .concept-photo {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: min(100%, 34rem);
-    margin: -0.5rem 0 1.6rem;
-    transform: rotate(2deg);
+    transform: none;
   }
 }
 
