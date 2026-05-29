@@ -196,7 +196,13 @@ castSwitchButtons.forEach((button) => {
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 
-const getImageLabel = (image) => image.alt?.replace("のキャラクター紹介", "") || "";
+const getImageLabel = (image) => {
+  if (activeLightboxGroup === "gallery") {
+    return "";
+  }
+
+  return image.alt?.replace("のキャラクター紹介", "") || "";
+};
 
 const showLightboxImage = (index) => {
   const activeItems = getActiveItems();

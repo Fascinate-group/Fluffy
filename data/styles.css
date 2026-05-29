@@ -1248,7 +1248,21 @@ h3 {
 }
 
 .info-panel {
+  position: relative;
   height: 100%;
+  overflow: hidden;
+}
+
+.info-panel::after {
+  content: "";
+  position: absolute;
+  right: 2.1rem;
+  bottom: 1.05rem;
+  width: min(9.8rem, 24%);
+  aspect-ratio: 9 / 16;
+  background: url("../images/misc/aruna.png") bottom right / contain no-repeat;
+  opacity: 0.17;
+  pointer-events: none;
 }
 
 dl {
@@ -1286,18 +1300,6 @@ dd {
   position: relative;
   align-items: start;
   overflow: hidden;
-}
-
-.event-flow-item::after {
-  content: "";
-  position: absolute;
-  right: 1.1rem;
-  bottom: 0;
-  width: min(6rem, 22%);
-  aspect-ratio: 9 / 16;
-  background: url("../images/misc/aruna.png") bottom right / contain no-repeat;
-  opacity: 0.17;
-  pointer-events: none;
 }
 
 .event-flow-item > * {
