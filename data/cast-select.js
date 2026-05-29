@@ -1,23 +1,23 @@
 const castProfiles = {
-  11: { name: "さき", generation: "1期生", className: "赤組さん", file: "images/cast/11_1_さき.png" },
-  12: { name: "はるかぜぽるん", generation: "1期生", className: "赤組さん", file: "images/cast/12_1_はるかぜぽるん.png" },
-  13: { name: "うされいな", generation: "1期生", className: "黄組さん", file: "images/cast/13_2_うされいな.png" },
-  14: { name: "こむ", generation: "1期生", className: "赤組さん", file: "images/cast/14_1_こむ.png" },
-  15: { name: "とやうじゆうじ", generation: "1期生", className: "青組さん", file: "images/cast/15_3_とやうじゆうじ.png" },
-  16: { name: "てすと", generation: "1期生", className: "黄組さん", file: "images/cast/16_2_てすと.png" },
-  17: { name: "こひないちご", generation: "1期生", className: "黄組さん", file: "images/cast/17_2_こひないちご.png" },
-  18: { name: "をみ", generation: "1期生", className: "黄組さん", file: "images/cast/18_2_をみ.png" },
-  21: { name: "ねこたちこ", generation: "2期生", className: "黄組さん", file: "images/cast/21_2_ねこたちこ.png" },
-  22: { name: "らんぷ", generation: "2期生", className: "黄組さん", file: "images/cast/22_2_らんぷ.png" },
-  23: { name: "なお", generation: "2期生", className: "青組さん", file: "images/cast/23_3_なお.png" },
-  24: { name: "うさみみか", generation: "2期生", className: "赤組さん", file: "images/cast/24_1_うさみみか.png" },
-  31: { name: "ねむ", generation: "3期生", className: "青組さん", file: "images/cast/31_3_ねむ.png" },
-  32: { name: "あるな", generation: "3期生", className: "青組さん", file: "images/cast/32_3_あるな.png" },
-  33: { name: "めーら", generation: "3期生", className: "赤組さん", file: "images/cast/33_1_めーら.png" },
-  34: { name: "こうめ", generation: "3期生", className: "黄組さん", file: "images/cast/34_2_こうめ.png" },
-  35: { name: "ゆゆ", generation: "3期生", className: "黄組さん", file: "images/cast/35_2_ゆゆ.png" },
-  36: { name: "ほしのすず", generation: "3期生", className: "赤組さん", file: "images/cast/36_1_ほしのすず.png" },
-  37: { name: "さんださよ", generation: "3期生", className: "青組さん", file: "images/cast/37_3_さんださよ.png" },
+  11: { name: "さき", generation: "1期生", className: "赤組さん（年少組）", file: "images/cast/11_1_さき.png" },
+  12: { name: "はるかぜぽるん", generation: "1期生", className: "赤組さん（年少組）", file: "images/cast/12_1_はるかぜぽるん.png" },
+  13: { name: "うされいな", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/13_2_うされいな.png" },
+  14: { name: "こむ", generation: "1期生", className: "赤組さん（年少組）", file: "images/cast/14_1_こむ.png" },
+  15: { name: "とやうじゆうじ", generation: "1期生", className: "青組さん（年長組）", file: "images/cast/15_3_とやうじゆうじ.png" },
+  16: { name: "てすと", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/16_2_てすと.png" },
+  17: { name: "こひないちご", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/17_2_こひないちご.png" },
+  18: { name: "をみ", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/18_2_をみ.png" },
+  21: { name: "ねこたちこ", generation: "2期生", className: "黄組さん（年中組）", file: "images/cast/21_2_ねこたちこ.png" },
+  22: { name: "らんぷ", generation: "2期生", className: "黄組さん（年中組）", file: "images/cast/22_2_らんぷ.png" },
+  23: { name: "なお", generation: "2期生", className: "青組さん（年長組）", file: "images/cast/23_3_なお.png" },
+  24: { name: "うさみみか", generation: "2期生", className: "赤組さん（年少組）", file: "images/cast/24_1_うさみみか.png" },
+  31: { name: "ねむ", generation: "3期生", className: "青組さん（年長組）", file: "images/cast/31_3_ねむ.png" },
+  32: { name: "あるな", generation: "3期生", className: "青組さん（年長組）", file: "images/cast/32_3_あるな.png" },
+  33: { name: "めーら", generation: "3期生", className: "赤組さん（年少組）", file: "images/cast/33_1_めーら.png" },
+  34: { name: "こうめ", generation: "3期生", className: "黄組さん（年中組）", file: "images/cast/34_2_こうめ.png" },
+  35: { name: "ゆゆ", generation: "3期生", className: "黄組さん（年中組）", file: "images/cast/35_2_ゆゆ.png" },
+  36: { name: "ほしのすず", generation: "3期生", className: "赤組さん（年少組）", file: "images/cast/36_1_ほしのすず.png" },
+  37: { name: "さんださよ", generation: "3期生", className: "青組さん（年長組）", file: "images/cast/37_3_さんださよ.png" },
 };
 
 const summary = document.querySelector("#cast-result-summary");
@@ -50,7 +50,7 @@ const createCard = ({ id, profile }) => {
 
   const caption = document.createElement("figcaption");
   const meta = document.createElement("span");
-  meta.textContent = `${profile.generation} ${profile.className}`;
+  meta.textContent = `${profile.className}`;
   caption.append(meta, profile.name);
 
   figure.append(image, caption);

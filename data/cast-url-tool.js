@@ -1,23 +1,23 @@
 const castProfiles = [
-  { id: "11", name: "さき", generation: "1期生", className: "赤組さん", file: "images/cast/11_1_さき.png" },
-  { id: "12", name: "はるかぜぽるん", generation: "1期生", className: "赤組さん", file: "images/cast/12_1_はるかぜぽるん.png" },
-  { id: "13", name: "うされいな", generation: "1期生", className: "黄組さん", file: "images/cast/13_2_うされいな.png" },
-  { id: "14", name: "こむ", generation: "1期生", className: "赤組さん", file: "images/cast/14_1_こむ.png" },
-  { id: "15", name: "とやうじゆうじ", generation: "1期生", className: "青組さん", file: "images/cast/15_3_とやうじゆうじ.png" },
-  { id: "16", name: "てすと", generation: "1期生", className: "黄組さん", file: "images/cast/16_2_てすと.png" },
-  { id: "17", name: "こひないちご", generation: "1期生", className: "黄組さん", file: "images/cast/17_2_こひないちご.png" },
-  { id: "18", name: "をみ", generation: "1期生", className: "黄組さん", file: "images/cast/18_2_をみ.png" },
-  { id: "21", name: "ねこたちこ", generation: "2期生", className: "黄組さん", file: "images/cast/21_2_ねこたちこ.png" },
-  { id: "22", name: "らんぷ", generation: "2期生", className: "黄組さん", file: "images/cast/22_2_らんぷ.png" },
-  { id: "23", name: "なお", generation: "2期生", className: "青組さん", file: "images/cast/23_3_なお.png" },
-  { id: "24", name: "うさみみか", generation: "2期生", className: "赤組さん", file: "images/cast/24_1_うさみみか.png" },
-  { id: "31", name: "ねむ", generation: "3期生", className: "青組さん", file: "images/cast/31_3_ねむ.png" },
-  { id: "32", name: "あるな", generation: "3期生", className: "青組さん", file: "images/cast/32_3_あるな.png" },
-  { id: "33", name: "めーら", generation: "3期生", className: "赤組さん", file: "images/cast/33_1_めーら.png" },
-  { id: "34", name: "こうめ", generation: "3期生", className: "黄組さん", file: "images/cast/34_2_こうめ.png" },
-  { id: "35", name: "ゆゆ", generation: "3期生", className: "黄組さん", file: "images/cast/35_2_ゆゆ.png" },
-  { id: "36", name: "ほしのすず", generation: "3期生", className: "赤組さん", file: "images/cast/36_1_ほしのすず.png" },
-  { id: "37", name: "さんださよ", generation: "3期生", className: "青組さん", file: "images/cast/37_3_さんださよ.png" },
+  { id: "11", name: "さき", generation: "1期生", className: "赤組さん（年少組）", file: "images/cast/11_1_さき.png" },
+  { id: "12", name: "はるかぜぽるん", generation: "1期生", className: "赤組さん（年少組）", file: "images/cast/12_1_はるかぜぽるん.png" },
+  { id: "13", name: "うされいな", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/13_2_うされいな.png" },
+  { id: "14", name: "こむ", generation: "1期生", className: "赤組さん（年少組）", file: "images/cast/14_1_こむ.png" },
+  { id: "15", name: "とやうじゆうじ", generation: "1期生", className: "青組さん（年長組）", file: "images/cast/15_3_とやうじゆうじ.png" },
+  { id: "16", name: "てすと", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/16_2_てすと.png" },
+  { id: "17", name: "こひないちご", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/17_2_こひないちご.png" },
+  { id: "18", name: "をみ", generation: "1期生", className: "黄組さん（年中組）", file: "images/cast/18_2_をみ.png" },
+  { id: "21", name: "ねこたちこ", generation: "2期生", className: "黄組さん（年中組）", file: "images/cast/21_2_ねこたちこ.png" },
+  { id: "22", name: "らんぷ", generation: "2期生", className: "黄組さん（年中組）", file: "images/cast/22_2_らんぷ.png" },
+  { id: "23", name: "なお", generation: "2期生", className: "青組さん（年長組）", file: "images/cast/23_3_なお.png" },
+  { id: "24", name: "うさみみか", generation: "2期生", className: "赤組さん（年少組）", file: "images/cast/24_1_うさみみか.png" },
+  { id: "31", name: "ねむ", generation: "3期生", className: "青組さん（年長組）", file: "images/cast/31_3_ねむ.png" },
+  { id: "32", name: "あるな", generation: "3期生", className: "青組さん（年長組）", file: "images/cast/32_3_あるな.png" },
+  { id: "33", name: "めーら", generation: "3期生", className: "赤組さん（年少組）", file: "images/cast/33_1_めーら.png" },
+  { id: "34", name: "こうめ", generation: "3期生", className: "黄組さん（年中組）", file: "images/cast/34_2_こうめ.png" },
+  { id: "35", name: "ゆゆ", generation: "3期生", className: "黄組さん（年中組）", file: "images/cast/35_2_ゆゆ.png" },
+  { id: "36", name: "ほしのすず", generation: "3期生", className: "赤組さん（年少組）", file: "images/cast/36_1_ほしのすず.png" },
+  { id: "37", name: "さんださよ", generation: "3期生", className: "青組さん（年長組）", file: "images/cast/37_3_さんださよ.png" },
 ];
 
 const grid = document.querySelector("#cast-tool-grid");
@@ -66,7 +66,7 @@ const createCard = ({ id, name, generation, className, file }) => {
   const text = document.createElement("span");
   text.className = "cast-tool-name";
   const meta = document.createElement("small");
-  meta.textContent = `${generation} ${className} / No.${id}`;
+  meta.textContent = `${className} / No.${id}`;
   text.append(meta, name);
 
   label.append(checkbox, image, text);
