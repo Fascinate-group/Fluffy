@@ -29,6 +29,7 @@ let touchStartY = 0;
 let touchDeltaX = 0;
 let touchDeltaY = 0;
 let swipedRecently = false;
+let pendingLightboxOrientationImage = null;
 const galleryPhotos = [
   "images/gallery/01.jpg",
   "images/gallery/02.jpg",
@@ -44,6 +45,51 @@ const galleryPhotos = [
   "images/gallery/12.jpg",
   "images/gallery/13.jpg",
 ];
+
+const markImageOrientation = (image, target = image) => {
+  const setOrientation = (isPortrait) => {
+    target.classList.toggle("is-portrait", isPortrait);
+    target.classList.toggle("is-landscape", !isPortrait);
+  };
+
+  const applyOrientation = () => {
+    setOrientation(image.naturalHeight > image.naturalWidth);
+  };
+
+  if (image.complete && image.naturalWidth) {
+    applyOrientation();
+    return;
+  }
+
+  image.addEventListener("load", applyOrientation, { once: true });
+};
+
+const updateLightboxOrientation = (sourceImage) => {
+  if (!lightboxFrame || !lightboxImage) {
+    return;
+  }
+
+  const setOrientation = (isPortrait) => {
+    lightboxFrame.classList.toggle("is-portrait", isPortrait);
+    lightboxFrame.classList.toggle("is-landscape", !isPortrait);
+  };
+
+  if (sourceImage.naturalWidth) {
+    setOrientation(sourceImage.naturalHeight > sourceImage.naturalWidth);
+    return;
+  }
+
+  pendingLightboxOrientationImage = sourceImage;
+  lightboxFrame.classList.remove("is-portrait", "is-landscape");
+};
+
+lightboxImage?.addEventListener("load", () => {
+  if (pendingLightboxOrientationImage?.src === lightboxImage.src && lightboxFrame) {
+    lightboxFrame.classList.toggle("is-portrait", lightboxImage.naturalHeight > lightboxImage.naturalWidth);
+    lightboxFrame.classList.toggle("is-landscape", lightboxImage.naturalWidth >= lightboxImage.naturalHeight);
+    pendingLightboxOrientationImage = null;
+  }
+});
 
 navToggle?.addEventListener("click", () => {
   const isOpen = siteNav.classList.toggle("is-open");
@@ -113,6 +159,7 @@ if (heroPhotoScatter) {
     image.src = shuffledPhotos[index % shuffledPhotos.length];
     image.alt = "";
     image.loading = "eager";
+    markImageOrientation(image, frame);
 
     frame.append(image);
     fragment.append(frame);
@@ -156,6 +203,7 @@ const showLightboxImage = (index) => {
   const image = activeItems[activeLightboxIndex];
   lightboxImage.src = image.src;
   lightboxImage.alt = image.alt;
+  updateLightboxOrientation(image);
   const label = lightboxGroups[activeLightboxGroup]?.label || "";
   const name = getImageLabel(image);
   lightboxCaption.textContent = [name, `${label} ${activeLightboxIndex + 1} / ${activeItems.length}`]
@@ -201,6 +249,12 @@ const closeFromLightboxClick = () => {
 window.closeGalleryLightbox = closeFromLightboxClick;
 
 document.querySelectorAll(".gallery-item").forEach((item, index) => {
+  const image = item.querySelector("img");
+
+  if (image) {
+    markImageOrientation(image, item);
+  }
+
   item.addEventListener("click", () => {
     openLightbox("gallery", Number(item.dataset.galleryIndex || index));
   });
