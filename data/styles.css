@@ -1047,6 +1047,16 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.previous-grid:empty {
+  min-height: 9rem;
+}
+
+.previous-empty {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .gallery-item {
   display: block;
   width: 100%;
@@ -1125,6 +1135,15 @@ h3 {
   text-align: center;
   font-weight: 700;
   line-height: 1.6;
+}
+
+.lightbox-download {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 3;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .lightbox-image-close {
@@ -1622,6 +1641,15 @@ dd {
     top: auto;
     bottom: 1rem;
     transform: none;
+  }
+
+  .lightbox-download {
+    right: auto;
+    bottom: 5rem;
+    left: 50%;
+    width: max-content;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
 
   .lightbox-prev {

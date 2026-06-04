@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Yomogi&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="data/styles.css?v=34">
+    <link rel="stylesheet" href="data/styles.css?v=35">
   </head>
   <body>
     <div class="floating-bg" aria-hidden="true">
@@ -56,6 +56,7 @@
         <a href="#event">開催情報</a>
         <a href="#entry">応募方法</a>
         <a href="#cast">キャスト</a>
+        <a href="#previous">前回のお写真</a>
         <a href="#gallery">ギャラリー</a>
         <a href="#news">最新情報</a>
       </nav>
@@ -332,6 +333,16 @@
         </div>
       </section>
 
+      <section id="previous" class="section previous-section">
+        <div class="section-heading">
+          <p class="eyebrow">Previous</p>
+          <h2>前回のおでかけのお写真</h2>
+          <p>前回のおでかけで撮影した写真です。画像を選ぶと大きく表示でき、ダウンロードもできます。</p>
+        </div>
+        <div class="gallery-grid previous-grid" id="previous-photo-grid" aria-label="前回のおでかけ写真ギャラリー"></div>
+        <p class="previous-empty" id="previous-empty" hidden>前回のお写真は準備中です。</p>
+      </section>
+
       <section id="gallery" class="section gallery-section">
         <div class="section-heading">
           <p class="eyebrow">Gallery</p>
@@ -437,9 +448,10 @@
         <button class="lightbox-image-close" type="button" aria-label="画像を閉じる"></button>
         <figcaption></figcaption>
       </figure>
+      <a class="button primary lightbox-download" href="#" download hidden>写真をダウンロード</a>
       <button class="lightbox-arrow lightbox-next" type="button" aria-label="次の画像">›</button>
     </div>
 
-    <script src="data/script.js?v=20"></script>
+    <script src="data/script.js?v=21"></script>
   </body>
 </html>

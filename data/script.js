@@ -4,18 +4,25 @@ const lightbox = document.querySelector("#gallery-lightbox");
 const lightboxImage = lightbox?.querySelector("img");
 const lightboxCaption = lightbox?.querySelector("figcaption");
 const lightboxFrame = lightbox?.querySelector(".lightbox-frame");
+const lightboxDownload = lightbox?.querySelector(".lightbox-download");
 const imageCloseButton = lightbox?.querySelector(".lightbox-image-close");
 const closeButton = lightbox?.querySelector(".lightbox-close");
 const prevButton = lightbox?.querySelector(".lightbox-prev");
 const nextButton = lightbox?.querySelector(".lightbox-next");
 const xTimeline = document.querySelector(".x-timeline");
 const heroPhotoScatter = document.querySelector(".hero-photo-scatter");
+const previousPhotoGrid = document.querySelector("#previous-photo-grid");
+const previousEmpty = document.querySelector("#previous-empty");
 const castSwitchButtons = Array.from(document.querySelectorAll(".cast-switch-card"));
 const castPanels = Array.from(document.querySelectorAll(".cast-panel"));
 const lightboxGroups = {
   gallery: {
     label: "Gallery",
     items: Array.from(document.querySelectorAll(".gallery-item img")),
+  },
+  previous: {
+    label: "前回のお写真",
+    items: [],
   },
   cast: {
     label: "Cast",
@@ -51,6 +58,8 @@ const galleryPhotos = [
   "images/gallery/18.jpg",
   "images/gallery/19.jpg",
 ];
+const previousPhotoExtensions = ["jpg", "jpeg", "png", "webp"];
+const previousPhotoMax = 99;
 
 const markImageOrientation = (image, target = image) => {
   const setOrientation = (isPortrait) => {
@@ -68,6 +77,77 @@ const markImageOrientation = (image, target = image) => {
   }
 
   image.addEventListener("load", applyOrientation, { once: true });
+};
+
+const testImage = (src) =>
+  new Promise((resolve) => {
+    const image = new Image();
+    image.onload = () => resolve(true);
+    image.onerror = () => resolve(false);
+    image.src = src;
+  });
+
+const findPreviousPhoto = async (index) => {
+  const number = String(index).padStart(2, "0");
+
+  for (const extension of previousPhotoExtensions) {
+    const src = `images/previous/${number}.${extension}`;
+
+    if (await testImage(src)) {
+      return { number, src };
+    }
+  }
+
+  return null;
+};
+
+const loadPreviousPhotos = async () => {
+  if (!previousPhotoGrid) {
+    return;
+  }
+
+  const photos = [];
+
+  for (let index = 1; index <= previousPhotoMax; index += 1) {
+    const photo = await findPreviousPhoto(index);
+
+    if (!photo) {
+      break;
+    }
+
+    photos.push(photo);
+  }
+
+  if (photos.length === 0) {
+    if (previousEmpty) {
+      previousEmpty.hidden = false;
+    }
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  photos.forEach((photo, index) => {
+    const button = document.createElement("button");
+    button.className = "gallery-item previous-item";
+    button.type = "button";
+    button.dataset.previousIndex = String(index);
+    button.setAttribute("aria-label", `前回のおでかけ写真 ${index + 1} を拡大表示`);
+
+    const image = document.createElement("img");
+    image.src = photo.src;
+    image.alt = `前回のおでかけ写真 ${index + 1}`;
+    image.loading = "lazy";
+    image.dataset.downloadName = `Fluffy_previous_${photo.number}.${photo.src.split(".").pop()}`;
+    markImageOrientation(image, button);
+
+    button.append(image);
+    button.addEventListener("click", () => openLightbox("previous", index));
+    fragment.append(button);
+  });
+
+  previousPhotoGrid.append(fragment);
+  lightboxGroups.previous.items = Array.from(previousPhotoGrid.querySelectorAll(".previous-item img"));
 };
 
 const updateLightboxOrientation = (sourceImage) => {
@@ -197,7 +277,7 @@ castSwitchButtons.forEach((button) => {
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 
 const getImageLabel = (image) => {
-  if (activeLightboxGroup === "gallery") {
+  if (activeLightboxGroup === "gallery" || activeLightboxGroup === "previous") {
     return "";
   }
 
@@ -221,6 +301,13 @@ const showLightboxImage = (index) => {
   lightboxCaption.textContent = [name, `${label} ${activeLightboxIndex + 1} / ${activeItems.length}`]
     .filter(Boolean)
     .join(" - ");
+
+  if (lightboxDownload) {
+    const canDownload = activeLightboxGroup === "previous";
+    lightboxDownload.hidden = !canDownload;
+    lightboxDownload.href = canDownload ? image.src : "#";
+    lightboxDownload.download = image.dataset.downloadName || image.src.split("/").pop() || "fluffy-photo";
+  }
 };
 
 const showNextImage = (step) => {
@@ -289,6 +376,8 @@ document.querySelectorAll(".cast-profile-card").forEach((card, index) => {
     }
   });
 });
+
+loadPreviousPhotos();
 
 closeButton?.addEventListener("click", closeLightbox);
 imageCloseButton?.addEventListener("click", closeFromLightboxClick);
