@@ -313,6 +313,17 @@ const canSharePhotoFiles = () =>
   typeof navigator.share === "function" &&
   typeof File === "function";
 
+const getDownloadName = (image) => {
+  const srcFilename = image.src.split("/").pop() || "fluffy-photo.jpg";
+  const galleryMatch = srcFilename.match(/^(\d+)\.jpg$/i);
+
+  if (activeLightboxGroup === "gallery" && galleryMatch) {
+    return `Fluffy_gallery_${galleryMatch[1]}.jpg`;
+  }
+
+  return image.dataset.downloadName || srcFilename;
+};
+
 const getImageLabel = (image) => {
   if (activeLightboxGroup === "gallery" || activeLightboxGroup === "previous") {
     return "";
@@ -340,10 +351,10 @@ const showLightboxImage = (index) => {
     .join(" - ");
 
   if (lightboxDownload) {
-    const canDownload = activeLightboxGroup === "previous";
+    const canDownload = activeLightboxGroup === "previous" || activeLightboxGroup === "gallery";
     lightboxDownload.hidden = !canDownload;
     lightboxDownload.href = canDownload ? image.src : "#";
-    lightboxDownload.download = image.dataset.downloadName || image.src.split("/").pop() || "fluffy-photo";
+    lightboxDownload.download = getDownloadName(image);
     lightboxDownload.dataset.downloadSrc = canDownload ? image.src : "";
     lightboxDownload.dataset.downloadName = lightboxDownload.download;
     lightboxDownload.textContent = canSharePhotoFiles() ? "写真を保存" : "写真をダウンロード";
