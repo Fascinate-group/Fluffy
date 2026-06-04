@@ -307,6 +307,12 @@ castSwitchButtons.forEach((button) => {
 
 const getActiveItems = () => lightboxGroups[activeLightboxGroup]?.items || [];
 
+const canSharePhotoFiles = () =>
+  typeof navigator !== "undefined" &&
+  typeof navigator.canShare === "function" &&
+  typeof navigator.share === "function" &&
+  typeof File === "function";
+
 const getImageLabel = (image) => {
   if (activeLightboxGroup === "gallery" || activeLightboxGroup === "previous") {
     return "";
@@ -340,6 +346,7 @@ const showLightboxImage = (index) => {
     lightboxDownload.download = image.dataset.downloadName || image.src.split("/").pop() || "fluffy-photo";
     lightboxDownload.dataset.downloadSrc = canDownload ? image.src : "";
     lightboxDownload.dataset.downloadName = lightboxDownload.download;
+    lightboxDownload.textContent = canSharePhotoFiles() ? "写真を保存" : "写真をダウンロード";
   }
 };
 
@@ -366,6 +373,18 @@ const downloadLightboxImage = async (event) => {
     }
 
     const blob = await response.blob();
+    const file = new File([blob], filename, {
+      type: blob.type || "image/jpeg",
+    });
+
+    if (navigator.canShare?.({ files: [file] })) {
+      await navigator.share({
+        files: [file],
+        title: "Fluffyのおでかけ写真",
+      });
+      return;
+    }
+
     const objectUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = objectUrl;
