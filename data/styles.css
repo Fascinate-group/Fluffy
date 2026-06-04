@@ -1638,9 +1638,7 @@ dd {
   }
 
   .lightbox-arrow {
-    top: auto;
-    bottom: 1rem;
-    transform: none;
+    display: none;
   }
 
   .lightbox-download {
@@ -1652,13 +1650,6 @@ dd {
     white-space: nowrap;
   }
 
-  .lightbox-prev {
-    left: calc(50% - 4rem);
-  }
-
-  .lightbox-next {
-    right: calc(50% - 4rem);
-  }
 }
 
 @media (max-width: 560px) {
