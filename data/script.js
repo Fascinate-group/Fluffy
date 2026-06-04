@@ -58,8 +58,8 @@ const galleryPhotos = [
   "images/gallery/18.jpg",
   "images/gallery/19.jpg",
 ];
-const previousPhotoExtensions = ["jpg", "jpeg", "png", "webp"];
 const previousPhotoMax = 99;
+const previousPhotoConcurrency = 8;
 
 const markImageOrientation = (image, target = image) => {
   const setOrientation = (isPortrait) => {
@@ -79,75 +79,106 @@ const markImageOrientation = (image, target = image) => {
   image.addEventListener("load", applyOrientation, { once: true });
 };
 
-const testImage = (src) =>
-  new Promise((resolve) => {
-    const image = new Image();
-    image.onload = () => resolve(true);
-    image.onerror = () => resolve(false);
-    image.src = src;
-  });
-
-const findPreviousPhoto = async (index) => {
-  const number = String(index).padStart(2, "0");
-
-  for (const extension of previousPhotoExtensions) {
-    const src = `images/previous/${number}.${extension}`;
-
-    if (await testImage(src)) {
-      return { number, src };
-    }
-  }
-
-  return null;
-};
-
-const loadPreviousPhotos = async () => {
+const refreshPreviousLightboxItems = () => {
   if (!previousPhotoGrid) {
     return;
   }
 
-  const photos = [];
+  lightboxGroups.previous.items = Array.from(
+    previousPhotoGrid.querySelectorAll(".previous-item img"),
+  );
+};
 
-  for (let index = 1; index <= previousPhotoMax; index += 1) {
-    const photo = await findPreviousPhoto(index);
-
-    if (!photo) {
-      break;
-    }
-
-    photos.push(photo);
-  }
-
-  if (photos.length === 0) {
-    if (previousEmpty) {
-      previousEmpty.hidden = false;
-    }
-    return;
-  }
-
-  const fragment = document.createDocumentFragment();
+const renderPreviousPhotos = (photos) => {
+  previousPhotoGrid.innerHTML = "";
 
   photos.forEach((photo, index) => {
     const button = document.createElement("button");
     button.className = "gallery-item previous-item";
     button.type = "button";
-    button.dataset.previousIndex = String(index);
     button.setAttribute("aria-label", `前回のおでかけ写真 ${index + 1} を拡大表示`);
 
     const image = document.createElement("img");
     image.src = photo.src;
     image.alt = `前回のおでかけ写真 ${index + 1}`;
     image.loading = "lazy";
-    image.dataset.downloadName = `Fluffy_previous_${photo.number}.${photo.src.split(".").pop()}`;
+    image.dataset.downloadName = `Fluffy_previous_${photo.number}.jpg`;
     markImageOrientation(image, button);
 
     button.append(image);
     button.addEventListener("click", () => openLightbox("previous", index));
-    fragment.append(button);
+    previousPhotoGrid.append(button);
   });
 
-  previousPhotoGrid.append(fragment);
-  lightboxGroups.previous.items = Array.from(previousPhotoGrid.querySelectorAll(".previous-item img"));
+  refreshPreviousLightboxItems();
+};
+
+const testPreviousPhoto = async (src) => {
+  try {
+    const response = await fetch(src, { method: "HEAD" });
+    return response.ok;
+  } catch {
+    return new Promise((resolve) => {
+      const probe = new Image();
+      probe.onload = () => resolve(true);
+      probe.onerror = () => resolve(false);
+      probe.src = src;
+    });
+  }
+};
+
+const loadPreviousPhotos = () => {
+  if (!previousPhotoGrid) {
+    return;
+  }
+
+  const photos = [];
+  let resolvedCount = 0;
+  let renderFrame = null;
+
+  const scheduleRender = () => {
+    if (renderFrame) {
+      return;
+    }
+
+    renderFrame = requestAnimationFrame(() => {
+      renderFrame = null;
+      photos.sort((first, second) => first.index - second.index);
+      renderPreviousPhotos(photos);
+    });
+  };
+
+  let nextIndex = 1;
+
+  const scanNext = () => {
+    if (nextIndex > previousPhotoMax) {
+      return;
+    }
+
+    const index = nextIndex;
+    nextIndex += 1;
+    const number = String(index).padStart(2, "0");
+    const src = `images/previous/${number}.jpg`;
+
+    testPreviousPhoto(src).then((exists) => {
+      resolvedCount += 1;
+
+      if (exists) {
+        photos.push({ number, src, index });
+        scheduleRender();
+      }
+
+      if (resolvedCount === previousPhotoMax && photos.length === 0 && previousEmpty) {
+        previousEmpty.hidden = false;
+      }
+
+      scanNext();
+    });
+  };
+
+  for (let worker = 0; worker < previousPhotoConcurrency; worker += 1) {
+    scanNext();
+  }
 };
 
 const updateLightboxOrientation = (sourceImage) => {
