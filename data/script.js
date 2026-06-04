@@ -307,11 +307,51 @@ const showLightboxImage = (index) => {
     lightboxDownload.hidden = !canDownload;
     lightboxDownload.href = canDownload ? image.src : "#";
     lightboxDownload.download = image.dataset.downloadName || image.src.split("/").pop() || "fluffy-photo";
+    lightboxDownload.dataset.downloadSrc = canDownload ? image.src : "";
+    lightboxDownload.dataset.downloadName = lightboxDownload.download;
   }
 };
 
 const showNextImage = (step) => {
   showLightboxImage(activeLightboxIndex + step);
+};
+
+const downloadLightboxImage = async (event) => {
+  event.preventDefault();
+
+  if (!lightboxDownload || lightboxDownload.hidden) {
+    return;
+  }
+
+  const src = lightboxDownload.dataset.downloadSrc || lightboxDownload.href;
+  const filename =
+    lightboxDownload.dataset.downloadName || src.split("/").pop() || "fluffy-photo.jpg";
+
+  try {
+    const response = await fetch(src);
+
+    if (!response.ok) {
+      throw new Error("download failed");
+    }
+
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = objectUrl;
+    link.download = filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+  } catch {
+    const link = document.createElement("a");
+    link.href = src;
+    link.download = filename;
+    link.rel = "noopener";
+    document.body.append(link);
+    link.click();
+    link.remove();
+  }
 };
 
 const openLightbox = (group, index) => {
@@ -381,6 +421,7 @@ loadPreviousPhotos();
 
 closeButton?.addEventListener("click", closeLightbox);
 imageCloseButton?.addEventListener("click", closeFromLightboxClick);
+lightboxDownload?.addEventListener("click", downloadLightboxImage);
 prevButton?.addEventListener("click", () => showNextImage(-1));
 nextButton?.addEventListener("click", () => showNextImage(1));
 lightboxImage?.addEventListener("click", closeFromLightboxClick);
