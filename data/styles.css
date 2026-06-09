@@ -179,6 +179,7 @@ body.is-lightbox-open {
   --duration: 24s;
   --delay: -8s;
   --opacity: 0.76;
+  --top: 70%;
 }
 
 .floating-bg span:nth-child(2) {
@@ -235,6 +236,7 @@ body.is-lightbox-open {
   --duration: 34s;
   --delay: -22s;
   --opacity: 0.48;
+  --top: 24%;
 }
 
 .floating-bg span:nth-child(9) {
@@ -315,6 +317,16 @@ body.is-lightbox-open {
   --duration: 32s;
   --delay: -7s;
   --opacity: 0.5;
+  --top: 78%;
+}
+
+.floating-bg span:nth-child(1),
+.floating-bg span:nth-child(8),
+.floating-bg span:nth-child(18) {
+  top: var(--top);
+  bottom: auto;
+  animation: none;
+  transform: translateY(-50%);
 }
 
 @keyframes float-bubble {
